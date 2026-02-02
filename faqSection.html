@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+            font-family:sans-serif;
+        }
+        h1{
+            text-align: center;
+            padding:30px 0px;
+        }
+        .faqMid{
+            max-width:1000px;
+            margin:auto;
+
+        }
+
+        .faqItems{
+            border:1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        .faqItems h4{
+
+            padding: 15px;
+            position: relative;
+            background-color: rgb(224, 235, 235);
+            cursor: pointer;
+        }
+
+        .faqItems h4 span{
+            position:absolute;
+            right:10px;
+
+        }
+
+         /* .faqItems p{
+            font-size:18px;
+            padding: 10px;
+            line-height: 30px;
+             max-height: 0;
+             background-color: rgb(239, 248, 248);
+             display: none;
+         } */
+
+         .showAns{
+            display: block !important;
+         }
+
+
+         .faqItems p{
+            font-size:18px;
+             max-height: 0;
+             opacity: 0;
+             overflow: hidden;
+             transition: all 0.4s ease;
+             background-color: rgb(239, 248, 248);
+     }
+
+        .faqItems p.showAns{
+         max-height: 500px;
+        opacity: 1;
+     }
+
+    </style>
+</head>
+<body>
+    <h1> Frequently Asked Questions</h1>
+
+    <div class="faqMid">
+        <div class="faqItems">
+            <h4>What is this section for?<span>+</span></h4>
+            <P >This section is for displaying frequently asked questions and their answers in a user-friendly format.</P>
+        </div>
+
+        <div class="faqItems">
+            <h4>How do I submit a question?<span>+</span></h4>
+            <P>You can submit a question by filling out the contact form on our website or by emailing us directly.</P>
+        </div>
+
+        <div class="faqItems">
+            <h4>How do I get help?<span>+</span></h4>
+            <P>You can get help by contacting our support team through the contact form or by calling our customer service number.</P>
+        </div>
+
+        <div class="faqItems">
+            <h4>How do I reset my password?<span>+</span></h4>
+            <P>You can reset your password by clicking on the "Forgot Password" link on the login page and following the instructions sent to your email.</P>
+        </div>
+
+        <div class="faqItems">
+            <h4>How do I update my profile information?<span>+</span></h4>
+            <P>You can update your profile information by navigating to the "My Account" section and selecting "Edit Profile". From there, you can modify your personal details and save the changes.</P>
+        </div>
+    </div>
+</body>
+<script>
+    let allQuestion = document.querySelectorAll(".faqItems h4")
+
+    allQuestion.forEach(( item, index)=>{
+        item.addEventListener("click",()=>{
+
+
+
+            allQuestion.forEach((heading, i)=>{
+                if(index !== i){
+                    heading.lastElementChild.innerHTML = "+"
+                     heading.nextElementSibling.classList.remove("showAns")
+                }
+                
+            })
+
+
+
+            if(item.lastElementChild.innerHTML =="+"){
+                item.lastElementChild.innerHTML = "-"
+            } else {
+                item.lastElementChild.innerHTML = "+"
+            }
+            item.nextElementSibling.classList.toggle("showAns")
+        })
+
+    })
+
+</script>
+</html>
